@@ -6,33 +6,7 @@
 [[ $- != *i* ]] && return
 
 # Shell Variables
-NONE='\[\e[0m\]'
-BLACK='\[\e[0;30m\]'
-RED='\[\e[0;31m\]'
-GREEN='\[\e[0;32m\]'
-YELLOW='\[\e[0;33m\]'
-BLUE='\[\e[0;34m\]'
-PURPLE='\[\e[0;35m\]'
-CYAN='\[\e[0;36m\]'
-GREY='\[\e[0;37m\]'
-BBLACK='\[\e[1;30m\]'
-BRED='\[\e[1;31m\]'
-BGREEN='\[\e[1;32m\]'
-BYELLOW='\[\e[1;33m\]'
-BBLUE='\[\e[1;34m\]'
-BPURPLE='\[\e[1;35m\]'
-BCYAN='\[\e[1;36m\]'
-BGREY='\[\e[1;37m\]'
-BGBLACK='\[\e[40m\]'
-BGRED='\[\e[41m\]'
-BGGREEN='\[\e[42m\]'
-BGYELLOW='\[\e[43m\]'
-BGBLUE='\[\e[44m\]'
-BGPURPLE='\[\e[45m\]'
-BGCYAN='\[\e[46m\]'
-BGGREY='\[\e[47m\]'
-
-PS1="$GREEN\u@\h$NONE:$CYAN\W$NONE \\$ "
+PS1="\[\e[0;32m\]\u@\h\[\e[0m\]:\[\e[0;36m\]\W\[\e[0m\] \\$ "
 PATH=$PATH:~/.local/bin
 
 # Aliases
