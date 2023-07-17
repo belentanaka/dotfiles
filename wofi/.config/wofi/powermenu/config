@@ -1,0 +1,7 @@
+allow_images=true
+image_size=32
+insensitive=true
+prompt=Power Menu
+term=kitty
+width=20%
+height=30%

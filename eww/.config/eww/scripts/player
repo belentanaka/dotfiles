@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+
+import hashlib
+import http.client
+import os
+import random
+import subprocess
+import sys
+import time
+
+from functools import lru_cache
+from urllib.parse import urlparse
+
+USAGE = f"Usage: {sys.argv[0]} {{art}}"
+
+HOME = os.environ.get('HOME')
+CACHE_BASE = f"{HOME}/.cache/eww/player"
+CACHE_HIGH_THRESHOLD = 1000
+CACHE_LOW_THRESHOLD = 900
+
+def error(msg):
+    print(msg, file=sys.stderr)
+    sys.exit(1)
+
+@lru_cache
+def get_id(s):
+    """ Gets an id from a given string s using SHA-1. """
+
+    return hashlib.sha1(s.encode()).hexdigest()
+
+def download(url):
+    """ Download data from the given url. """
+
+    parsed = urlparse(url)
+
+    match parsed.scheme:
+        case 'http':
+            conn = http.client.HTTPConnection(parsed.netloc)
+        case 'https':
+            conn = http.client.HTTPSConnection(parsed.netloc)
+        case _:
+            error("Protocol {parsed.scheme} not supported")
+
+    conn.request('GET', parsed.path)
+    res = conn.getresponse()
+    data = res.read()
+    return data
+
+def cleanup(cache, k):
+    """ Randomly remove k files from the cache. """
+
+    files = os.listdir(cache)
+    sample = random.sample(files, k)
+    for f in sample:
+        os.remove(f'{cache}/{f}')
+
+def art():
+    """ Outputs the path to the current art file that should be used. """
+
+    cache = f"{CACHE_BASE}/art"
+    if not os.path.exists(cache):
+        os.makedirs(cache)
+
+    cache_size = len(os.listdir(cache))
+    num_to_remove = CACHE_HIGH_THRESHOLD - CACHE_LOW_THRESHOLD
+
+    proc = subprocess.Popen(
+            ['playerctl', '--follow', 'metadata', 'mpris:artUrl'],
+            stdout=subprocess.PIPE,
+            encoding='utf8')
+
+    while True:
+        url = proc.stdout.readline().strip()
+        parsed = urlparse(url)
+
+        match parsed.scheme:
+            case 'http' | 'https':
+                filename = get_id(url)
+                fullname = f"{cache}/{filename}"
+                if not os.path.exists(fullname):
+                    if cache_size == CACHE_HIGH_THRESHOLD:
+                        cleanup(cache, num_to_remove)
+                        cache_size -= num_to_remove
+                    data = download(url)
+                    with open(fullname, 'wb') as f:
+                        f.write(data)
+                    cache_size += 1
+                print(fullname, flush=True)
+            case 'file' | '':
+                print(parsed.path, flush=True)
+            case _:
+                error(f"Protocol {parsed.scheme} not supported")
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        error(USAGE)
+
+    cmd = sys.argv[1]
+    match cmd:
+        case 'art':
+            art()
+        case _:
+            error(USAGE)

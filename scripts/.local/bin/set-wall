@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+
+DEST=$HOME/.wallpaper
+
+if [ "$#" -eq "0" ]; then
+    # Open ranger if no file given
+    tmpfile=$(mktemp)
+    ranger --choosefile="$tmpfile"
+    file=$(cat "$tmpfile")
+    rm "$tmpfile"
+
+    # Exit if no file was chosen
+    [ -z "$file" ] && exit 0
+else
+    file=$1
+fi
+
+if [ ! -f $file ]; then
+    echo "error: file does not exist"
+    exit 1
+fi
+
+# Check for valid file type
+filetype=$(file -b --mime-type "$file")
+for t in "image/jpeg" "image/png"; do
+    if [ "$filetype" = "$t" ]; then
+        ln -sf $(readlink -f "$file") $DEST
+        exit 0
+    fi
+done
+
+echo "error: invalid file type"
+exit 1

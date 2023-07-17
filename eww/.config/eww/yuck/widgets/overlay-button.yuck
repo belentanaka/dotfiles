@@ -1,0 +1,18 @@
+(defwidget overlay-button [?active
+                           ?onclick
+                           ?width
+                           ?height
+                           ?spacing
+                           ?space-evenly]
+  (box :class "overlay-button"
+       :orientation "horizontal"
+    (overlay :width width
+             :height height
+      (button :active active
+              :onclick onclick
+              :width width
+              :height height)
+      (box :orientation "horizontal"
+           :spacing spacing
+           :space-evenly space-evenly
+        (children)))))

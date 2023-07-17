@@ -1,0 +1,17 @@
+(defwidget ram []
+  (box :class "ram"
+       :orientation "horizontal"
+       :tooltip "RAM Usage: ${round(EWW_RAM.used_mem_perc, 1)}%"
+    (image :path {EWW_RAM.used_mem_perc <= 5 ? "./assets/ram-0.png" :
+                  EWW_RAM.used_mem_perc <= 10 ? "./assets/ram-10.png" :
+                  EWW_RAM.used_mem_perc <= 20 ? "./assets/ram-20.png" :
+                  EWW_RAM.used_mem_perc <= 25 ? "./assets/ram-25.png" :
+                  EWW_RAM.used_mem_perc <= 30 ? "./assets/ram-30.png" :
+                  EWW_RAM.used_mem_perc <= 40 ? "./assets/ram-40.png" :
+                  EWW_RAM.used_mem_perc <= 50 ? "./assets/ram-50.png" :
+                  EWW_RAM.used_mem_perc <= 60 ? "./assets/ram-60.png" :
+                  EWW_RAM.used_mem_perc <= 70 ? "./assets/ram-70.png" :
+                  EWW_RAM.used_mem_perc <= 75 ? "./assets/ram-75.png" :
+                  EWW_RAM.used_mem_perc <= 80 ? "./assets/ram-80.png" :
+                  EWW_RAM.used_mem_perc <= 90 ? "./assets/ram-90.png" :
+                  "./assets/ram-100.png"})))

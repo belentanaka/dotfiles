@@ -1,0 +1,7 @@
+allow_images=true
+image_size=24
+insensitive=true
+prompt=Launch a program.
+term=kitty
+width=20%
+height=50%

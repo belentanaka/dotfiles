@@ -1,0 +1,7 @@
+(defwidget clock []
+  (box :class "clock"
+       :orientation "horizontal"
+       :spacing 8
+       :space-evenly false
+    (label :text date)
+    (label :text time)))

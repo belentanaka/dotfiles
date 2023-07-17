@@ -1,0 +1,17 @@
+(defwidget cpu []
+  (box :class "cpu"
+       :orientation "horizontal"
+       :tooltip "CPU Usage: ${round(EWW_CPU.avg, 1)}%"
+    (image :path {EWW_CPU.avg <= 5 ? "./assets/cpu-0.png" :
+                  EWW_CPU.avg <= 10 ? "./assets/cpu-10.png" :
+                  EWW_CPU.avg <= 20 ? "./assets/cpu-20.png" :
+                  EWW_CPU.avg <= 25 ? "./assets/cpu-25.png" :
+                  EWW_CPU.avg <= 30 ? "./assets/cpu-30.png" :
+                  EWW_CPU.avg <= 40 ? "./assets/cpu-40.png" :
+                  EWW_CPU.avg <= 50 ? "./assets/cpu-50.png" :
+                  EWW_CPU.avg <= 60 ? "./assets/cpu-60.png" :
+                  EWW_CPU.avg <= 70 ? "./assets/cpu-70.png" :
+                  EWW_CPU.avg <= 75 ? "./assets/cpu-75.png" :
+                  EWW_CPU.avg <= 80 ? "./assets/cpu-80.png" :
+                  EWW_CPU.avg <= 90 ? "./assets/cpu-90.png" :
+                  "./assets/cpu-100.png"})))

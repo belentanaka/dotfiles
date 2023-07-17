@@ -1,0 +1,14 @@
+(defwidget wlan []
+  (box :class "wlan"
+       :orientation "horizontal"
+       :tooltip {signal == "" ? "Not Connected" :
+"SSID: ${ssid}
+Signal: ${signal} dBm
+↓${round(EWW_NET.wlan0.NET_DOWN / 128, 0)} Kbps
+↑${round(EWW_NET.wlan0.NET_UP / 128, 0)} Kbps"}
+    (image :path {signal == "" ? "./assets/wlan-not-connected.png" :
+                  signal < -90 ? "./assets/wlan-signal-0.png" :
+                  signal < -80 ? "./assets/wlan-signal-1.png" :
+                  signal < -70 ? "./assets/wlan-signal-2.png" :
+                  signal < -67 ? "./assets/wlan-signal-3.png" :
+                  "./assets/wlan-signal-4.png"})))

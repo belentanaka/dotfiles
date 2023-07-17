@@ -1,0 +1,27 @@
+(defwidget bar []
+  (centerbox :class "bar"
+             :orientation "horizontal"
+             :height 36
+    ; Left side
+    (box :orientation "horizontal"
+         :valign "center"
+         :halign "start"
+      (workspaces :button-width 36
+                  :button-height 36))
+    ; Center
+    (box :orientation "horizontal"
+         :valign "center"
+         :halign "center"
+      (player :button-width 32
+              :button-height 24))
+    ; Right side
+    (box :orientation "horizontal"
+         :spacing 8
+         :space-evenly false
+         :valign "center"
+         :halign "end"
+      (updates)
+      (cpu)
+      (ram)
+      (wlan)
+      (clock))))

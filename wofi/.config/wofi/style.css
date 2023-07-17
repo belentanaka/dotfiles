@@ -1,0 +1,15 @@
+#outer-box {
+    padding: 8px;
+    border-top: 2px solid #FFFFFF;
+    border-right: 2px solid #868686;
+    border-bottom: 2px solid #868686;
+    border-left: 2px solid #FFFFFF;
+}
+
+#input {
+    margin-bottom: 8px;
+}
+
+#img {
+    margin-right: 0.5em;
+}

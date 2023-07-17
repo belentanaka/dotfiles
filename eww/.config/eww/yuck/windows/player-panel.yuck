@@ -1,0 +1,7 @@
+(defwindow player-panel
+  :monitor 0
+  :geometry (geometry :y "8px"
+                      :anchor "bottom center")
+  :stacking "fg"
+  :exclusive false
+  (player-panel))

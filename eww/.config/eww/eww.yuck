@@ -1,0 +1,65 @@
+; Normal variables
+(defvar bar-height 34)
+(defvar player-panel-visible false)
+
+; Polling variables
+(defpoll aur :interval "10m"
+             :initial 0
+  `yay -Qm | timeout 10 aur vercmp | wc -l`)
+(defpoll date :interval "5s"
+              :initial ""
+  `date +"%Y-%m-%d"`)
+(defpoll pacman :interval "10m"
+                :initial 0
+  `timeout 10 checkupdates | wc -l`)
+(defpoll player-position :interval "0.5s"
+                         :initial ""
+  `playerctl position --format "{{duration(position)}}" || echo ""`)
+(defpoll player-position-secs :interval "0.5s"
+                              :initial 0
+  `playerctl position || echo 0`)
+(defpoll signal :interval "3s"
+                :initial 0
+  `cat /proc/net/wireless | awk 'NR==3 {printf "%.0f", $4}'`)
+(defpoll ssid :interval "3s"
+              :initial ""
+  `iwgetid -r`)
+(defpoll time :interval "1s"
+              :initial ""
+  `date +%H:%M`)
+
+; Listening variables
+(deflisten player-album :initial ""
+  `playerctl --follow metadata album`)
+(deflisten player-artist :initial ""
+  `playerctl --follow metadata artist`)
+(deflisten player-art :initial ""
+  `./scripts/player art`)
+(deflisten player-length :initial ""
+  `playerctl --follow metadata --format "{{duration(mpris:length)}}"`)
+(deflisten player-length-micros :initial 0
+  `playerctl --follow metadata mpris:length`)
+(deflisten player-playername :initial ""
+  `playerctl --follow metadata --format "{{uc(playerName)}}"`)
+(deflisten player-status :initial ""
+  `playerctl --follow status`)
+(deflisten player-title :initial ""
+  `playerctl --follow metadata title`)
+(deflisten workspaces :initial "[]"
+  `./scripts/hyprland workspaces`)
+
+; Widgets
+(include "./yuck/widgets/bar.yuck")
+(include "./yuck/widgets/clock.yuck")
+(include "./yuck/widgets/cpu.yuck")
+(include "./yuck/widgets/overlay-button.yuck")
+(include "./yuck/widgets/player.yuck")
+(include "./yuck/widgets/player-panel.yuck")
+(include "./yuck/widgets/ram.yuck")
+(include "./yuck/widgets/updates.yuck")
+(include "./yuck/widgets/wlan.yuck")
+(include "./yuck/widgets/workspaces.yuck")
+
+; Windows
+(include "./yuck/windows/player-panel.yuck")
+(include "./yuck/windows/bar.yuck")

@@ -1,0 +1,62 @@
+(defwidget player-panel []
+  (box :class "player-panel"
+       :orientation "horizontal"
+       :spacing 16
+       :space-evenly false
+       :visible {player-panel-visible && player-status != "Stopped"}
+    (overlay
+      (box :class "player-cover"
+           :orientation "vertical"
+           :width 128
+           :height 128
+           :valign "start"
+           :style "background-image: url(\"${player-art}\");
+                   background-size: 128px;
+                   background-repeat: no-repeat;
+                   background-position: center;")
+      (label :class "player-noimage"
+             :text "NO IMAGE"
+             :xalign 0.5
+             :yalign 0.5
+             :visible {strlength(player-art) == 0}))
+    (box :orientation "vertical"
+         :width 256
+         :valign "center"
+         :spacing 8
+         :space-evenly false
+      (box :orientation "horizontal"
+           :spacing 0
+           :space-evenly false
+           :visible {strlength(player-artist) > 0}
+        (label :class "player-category"
+               :valign "start"
+               :width 72
+               :xalign 0
+               :text "Artist(s): ")
+        (label :text player-artist
+               :xalign 0
+               :wrap true))
+      (box :orientation "horizontal"
+           :spacing 0
+           :space-evenly false
+           :visible {strlength(player-title) > 0}
+        (label :class "player-category"
+               :valign "start"
+               :width 72
+               :xalign 0
+               :text "Title: ")
+        (label :text player-title
+               :xalign 0
+               :wrap true))
+      (box :orientation "horizontal"
+           :spacing 0
+           :space-evenly false
+           :visible {strlength(player-album) > 0}
+        (label :class "player-category"
+               :valign "start"
+               :width 72
+               :xalign 0
+               :text "Album: ")
+        (label :text player-album
+               :xalign 0
+               :wrap true)))))

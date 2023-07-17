@@ -1,0 +1,45 @@
+(defwidget player [?button-width
+                   ?button-height]
+  (eventbox :class "player"
+            :onhover "eww update player-panel-visible=true"
+            :onhoverlost "eww update player-panel-visible=false"
+            :visible {strlength(player-status) > 0}
+    (box :class "player-interface"
+         :orientation "horizontal"
+         :spacing 8
+         :space-evenly false
+         :width 600
+      (box :class "player-controls"
+           :orientation "horizontal"
+           :spacing 0
+           :space-evenly false
+           :height button-height
+        ; Previous Button
+        (button :active {player-status != "Stopped"}
+                :onclick "playerctl previous || playerctl position 0"
+                :width button-width
+                :height button-height
+          (image :path "./assets/media-previous.png"))
+        ; Play / Pause Button
+        (button :active {player-status != "Stopped"}
+                :onclick "playerctl play-pause"
+                :width button-width
+                :height button-height
+          (image :path {player-status == "Playing" ?
+            "./assets/media-pause.png" : "./assets/media-play.png"}))
+        ; Next Button
+        (button :active {player-status != "Stopped"}
+                :onclick "playerctl next"
+                :width button-width
+                :height button-height
+          (image :path "./assets/media-next.png")))
+      (label :class "player-playername"
+             :text player-playername)
+      (scale :active {strlength(player-length) > 0}
+             :value {strlength(player-length) > 0 ? player-position-secs : 0}
+             :min 0
+             :max {strlength(player-length) > 0 ?
+                    player-length-micros / 1000000 : 0}
+             :onchange "playerctl position {}"
+             :hexpand true)
+      (label :text "${player-position} / ${player-length}"))))

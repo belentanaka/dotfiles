@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+POWERMENU_DIR="$HOME/.config/wofi/powermenu"
+
+entries=\
+"img:$POWERMENU_DIR/img/powermenu-lock.png:text:Lock\n"\
+"img:$POWERMENU_DIR/img/powermenu-poweroff.png:text:Suspend\n"\
+"img:$POWERMENU_DIR/img/powermenu-exit.png:text:Exit WM\n"\
+"img:$POWERMENU_DIR/img/powermenu-reboot.png:text:Reboot\n"\
+"img:$POWERMENU_DIR/img/powermenu-poweroff.png:text:Power Off"
+
+selected=$(echo -e "$entries" | \
+           wofi -c "$POWERMENU_DIR/config" -k /dev/null -S dmenu)
+
+cmd=$(echo "$selected" | awk -F ':' '{print $4}')
+
+case $cmd in
+    "Lock")
+        lockscreen ;;
+    "Suspend")
+        systemctl suspend ;;
+    "Exit WM")
+        hyprctl dispatch exit ;;
+    "Reboot")
+        systemctl reboot ;;
+    "Power Off")
+        systemctl poweroff ;;
+esac

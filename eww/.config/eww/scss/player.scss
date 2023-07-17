@@ -1,0 +1,16 @@
+.player .player-interface {
+    padding-right: 0.5em;
+    border-top: 1px solid $dark_shadow;
+    border-right: 1px solid $light_shadow;
+    border-bottom: 1px solid $light_shadow;
+    border-left: 1px solid $dark_shadow;
+}
+
+.player-interface {
+    border: 1px solid #000;
+}
+
+.player .player-playername {
+    font-family: "Sazanami Mincho";
+    font-size: 14px;
+}

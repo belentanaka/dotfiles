@@ -1,0 +1,22 @@
+.player-panel {
+    padding: 1em;
+    border-top: 2px solid $light_shadow;
+    border-right: 2px solid $dark_shadow;
+    border-bottom: 2px solid $dark_shadow;
+    border-left: 2px solid $light_shadow;
+}
+
+.player-panel .player-cover {
+    border-top: 1px solid $dark_shadow;
+    border-right: 1px solid $light_shadow;
+    border-bottom: 1px solid $light_shadow;
+    border-left: 1px solid $dark_shadow;
+}
+
+.player-panel .player-category {
+    font-weight: bold;
+}
+
+.player-panel .player-noimage {
+    font-size: 12px;
+}

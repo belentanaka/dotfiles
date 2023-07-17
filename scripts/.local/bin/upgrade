@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+yay
+eww update aur=$(yay -Qm | aur vercmp | wc -l)
+eww update pacman=$(checkupdates | wc -l)

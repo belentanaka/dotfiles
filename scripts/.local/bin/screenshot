@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+file_name=$(date +screenshot_%Y%m%d_%H%M%S.png)
+picture_dir="$HOME/Pictures"
+grim "$picture_dir/$file_name" -l 0
+
+if [ -f "$picture_dir/$file_name" ]; then
+    notify-send -i "applets-screenshooter" "Screenshot Successful"\
+        "Saved in Pictures as $file_name"
+else
+    notify-send -i "dialog-error" "Screenshot Failed" "An error occurred"
+fi

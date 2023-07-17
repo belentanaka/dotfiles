@@ -1,0 +1,12 @@
+(defwidget workspaces [?button-width
+                       ?button-height]
+  (box :class "workspaces"
+       :orientation "horizontal"
+       :spacing 0
+       :space-evenly false
+    (for w in workspaces
+      (button :class {w.active ? "active" : ""}
+              :onclick "hyprctl dispatch workspace name:${w.name}"
+              :width button-width
+              :height button-height
+        {w.name}))))
