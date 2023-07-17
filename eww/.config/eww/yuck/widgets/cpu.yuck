@@ -1,7 +1,7 @@
 (defwidget cpu []
   (box :class "cpu"
        :orientation "horizontal"
-       :tooltip "CPU Usage: ${round(EWW_CPU.avg, 1)}%"
+       :tooltip "CPU Usage: ${round(EWW_CPU.avg, 0)}%"
     (image :path {EWW_CPU.avg <= 5 ? "./assets/cpu-0.png" :
                   EWW_CPU.avg <= 10 ? "./assets/cpu-10.png" :
                   EWW_CPU.avg <= 20 ? "./assets/cpu-20.png" :
