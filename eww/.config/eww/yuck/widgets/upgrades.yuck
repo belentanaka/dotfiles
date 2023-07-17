@@ -1,7 +1,7 @@
-(defwidget updates []
-  (box :class "updates"
+(defwidget upgrades []
+  (box :class "upgrades"
        :orientation "horizontal"
        :visible {aur + pacman > 0}
        :tooltip "${aur + pacman} upgrade(s) available
 ${pacman} official, ${aur} AUR"
-    (image :path "./assets/updates-available.png")))
+    (image :path "./assets/upgrades-available.png")))

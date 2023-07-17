@@ -5,13 +5,13 @@
 ; Polling variables
 (defpoll aur :interval "10m"
              :initial 0
-  `yay -Qm | timeout 10 aur vercmp | wc -l`)
+  `./scripts/aur`)
 (defpoll date :interval "5s"
               :initial ""
   `date +"%Y-%m-%d"`)
 (defpoll pacman :interval "10m"
                 :initial 0
-  `timeout 10 checkupdates | wc -l`)
+  `./scripts/pacman`)
 (defpoll player-position :interval "0.5s"
                          :initial ""
   `playerctl position --format "{{duration(position)}}" || echo ""`)
@@ -56,7 +56,7 @@
 (include "./yuck/widgets/player.yuck")
 (include "./yuck/widgets/player-panel.yuck")
 (include "./yuck/widgets/ram.yuck")
-(include "./yuck/widgets/updates.yuck")
+(include "./yuck/widgets/upgrades.yuck")
 (include "./yuck/widgets/wlan.yuck")
 (include "./yuck/widgets/workspaces.yuck")
 

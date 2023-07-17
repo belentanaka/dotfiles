@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+yay -Qm | timeout 10 aur vercmp | wc -l

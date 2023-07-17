@@ -20,7 +20,7 @@
          :space-evenly false
          :valign "center"
          :halign "end"
-      (updates)
+      (upgrades)
       (cpu)
       (ram)
       (wlan)

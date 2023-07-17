@@ -42,3 +42,10 @@ alias ll='ls -al'
 alias ra='ranger'
 alias rm='rm -Iv --preserve-root'
 alias tree='tree -C'
+
+# Functions
+yay() {
+    command yay "$@"
+    eww update aur=$($HOME/.config/eww/scripts/aur)
+    eww update pacman=$($HOME/.config/eww/scripts/pacman)
+}
