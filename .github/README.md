@@ -14,7 +14,7 @@ This section will be dedicated to breaking down the more complex configurations 
 
 ## Eww
 
-Viewable [here](/eww). To be used with the [eww](https://github.com/elkowar/eww/tree/master) widget system.
+Viewable [here](/eww/.config/eww). To be used with the [eww](https://github.com/elkowar/eww) widget system.
 
 There are a couple of complex widgets used in my eww configuration:
 
