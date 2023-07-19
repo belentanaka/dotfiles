@@ -30,6 +30,6 @@ Because eww doesn't support remote images, I had to develop a workaround for dis
 
 ### workspaces
 
-This widget contains buttons representing opened [hyprland](https://wiki.hyprland.org/) workspaces. Clicking on a button will switch you to it's corresponding workspace. This is intended to work similarly to the workspace switching buttons used in [i3bar](https://i3wm.org/i3bar/).
+This widget contains buttons representing opened [hyprland](https://github.com/hyprwm/Hyprland) workspaces. Clicking on a button will switch you to it's corresponding workspace. This is intended to work similarly to the workspace switching buttons used in [i3bar](https://github.com/i3/i3).
 
 This widget uses a listening variable defined in `eww.yuck` which continously runs and gets output from the script `hyprland`. The script connects and listens to a hyprland socket and waits for events involving workspaces. When these events occur, the script uses hyprctl to retrieve workspace data and outputs a string representing an array of JSON objects, with each object representing a hyprland workspace. From there it is easy to use yuck and scss code to translate the JSON data into buttons for the widget.
