@@ -1,5 +1,7 @@
 # Dotfiles
 
+![A screenshot of my desktop.](./images/screenshot_desktop.png)
+
 [Dotfiles](https://wiki.archlinux.org/title/Dotfiles) are plain text files used to store user-specific application configurations. These files are found in Unix-like operating systems, and often have names beginning with a `.`, hence the name "dotfiles". There are many different ways to organize them, which you can learn about [here](https://dotfiles.github.io/).
 
 I am very particular about the way my system should look and behave, so I created this git repository to save and keep track of my dotfiles. Locally these files are stored in my home directory under `$HOME/dotfiles`, and they are installed and managed using [GNU Stow](https://www.gnu.org/software/stow/). I prefer Stow because it is free, portable, lightweight, and simple.
