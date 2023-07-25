@@ -7,7 +7,8 @@
 
 # Shell Variables
 PS1="\[\e[0;32m\]\u@\h\[\e[0m\]:\[\e[0;36m\]\W\[\e[0m\] \\$ "
-PATH=$PATH:~/.local/bin
+PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:/usr/local/texlive/2023/bin/x86_64-linux
 
 # Aliases
 alias grep='grep --color=auto'
