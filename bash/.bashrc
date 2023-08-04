@@ -21,7 +21,7 @@ alias tree='tree -C'
 # Functions
 yay() {
     command yay "$@"
-    if [ "$#" -eq 0 ] || [ "$@" = "-Syu" ]; then
+    if [ "$#" -eq 0 ] || [ "$1" = "-Syu" ]; then
         eww update aur=$($HOME/.config/eww/scripts/aur)
         eww update pacman=$($HOME/.config/eww/scripts/pacman)
     fi
