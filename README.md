@@ -1,5 +1,7 @@
 # Dotfiles
 
+![Screenshot of my desktop.](screenshot.png)
+
 [Dotfiles](https://wiki.archlinux.org/title/Dotfiles) are plain text files used
 to store user-specific application configurations. These files are found in
 Unix-like operating systems, and often have names beginning with a `.`, hence
